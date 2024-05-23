@@ -2,16 +2,14 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:Saludimetro.DTOs"
-             x:Class="Saludimetro.Views.PatientListPage"
-             Title="PatientListPage">
+             x:Class="Saludimetro.Views.PatientListPage">
+    
 
+    <Grid RowDefinitions="Auto,*,Auto" RowSpacing="15" Margin="15">
+        <Button Grid.Row="2" Text="Agregar Paciente" Command="{Binding CreateCommand}" Padding="5,5,5,5"/>
+        <Label Grid.Row="0" Text="Lista de pacientes" FontSize="Subtitle"/>
 
-
-     <Grid RowDefinitions="Auto,Auto,*" RowSpacing="15" Margin="15">
-        <Button Grid.Row="0" Text="Agregar Paciente" Command="{Binding CreateCommand}"/>
-        <Label Grid.Row="1" Text="Lista de pacientes" FontSize="Subtitle"/>
-
-        <ScrollView Grid.Row="2">
+        <ScrollView Grid.Row="1">
             <CollectionView ItemsSource="{Binding PatientList}">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout ItemSpacing="5" Orientation="Vertical"/>
@@ -27,17 +25,17 @@
                             <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto"
                                   ColumnDefinitions="Auto,*">
 
-                                <Label Grid.Row="0" Grid.Column="0" Text="Nombre" FontAttributes="Bold"/>
-                                <Label Grid.Row="0" Grid.Column="1" HorizontalOptions="End" Text="{Binding Name}"/>
+                                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Start" FontSize="Subtitle">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Name}" />
+                                            <Span Text=" " />
+                                            <Span Text="{Binding LastName}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
 
-                                <Label Grid.Row="1" Grid.Column="0" Text="Apellido" FontAttributes="Bold"/>
-                                <Label Grid.Row="1" Grid.Column="1" HorizontalOptions="End" Text="{Binding LastName}"/>
-
-                                <Label Grid.Row="2" Grid.Column="0" Text="Estatura" FontAttributes="Bold"/>
-                                <Label Grid.Row="2" Grid.Column="1" HorizontalOptions="End" Text="{Binding Height}"/>
-
-                                <Label Grid.Row="3" Grid.Column="0" Text="Peso" FontAttributes="Bold"/>
-                                <Label Grid.Row="3" Grid.Column="1" HorizontalOptions="End" Text="{Binding Weight}"/>
+                                
 
                                 <Label Grid.Row="4" Grid.Column="0" Padding="10,15,10,5" Text="Editar" TextColor="Blue">
                                     <Label.GestureRecognizers>
@@ -77,3 +75,4 @@
     </Grid>
     
 </ContentPage>
+
