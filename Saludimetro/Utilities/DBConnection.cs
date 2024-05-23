@@ -17,8 +17,13 @@ namespace Saludimetro.Utilities
 				dbPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 				dbPath = Path.Combine(dbPath, "..", "Library", dbName);
 			}
+            else if (DeviceInfo.Platform == DevicePlatform.MacCatalyst)
+            {
+                dbPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                dbPath = Path.Combine(dbPath, "..", "Library", dbName);
+            }
 
-			return dbPath;
+            return dbPath;
 		}
 	}
 }
