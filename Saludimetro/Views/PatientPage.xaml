@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Saludimetro.Views.PatientPage"
+             Title="{Binding PageTitle}">
+    <VerticalStackLayout Padding="15"> 
+        <ActivityIndicator IsVisible="{Binding IsLoadingVisible}"
+                           IsRunning="{Binding IsLoadingVisible}"
+                           Color="Blue"
+                           HeightRequest="30"
+                           />
+
+        <Label Text="Nombre"/>
+        <Entry Text="{Binding PatientDto.Name}" Margin="0,0,0,10"/>
+
+        <Label Text="Apellido"/>
+        <Entry Text="{Binding PatientDto.LastName}" Margin="0,0,0,10"/>
+
+        <Label Text="Edad"/>
+        <Entry Text="{Binding PatientDto.Age}" Keyboard="Numeric" Margin="0,0,0,10"/>
+
+        <Label Text="Estatura"/>
+        <Entry Text="{Binding PatientDto.Height}" Keyboard="Numeric" Margin="0,0,0,10"/>
+
+        <Label Text="Peso"/>
+        <Entry Text="{Binding PatientDto.Weight}" Keyboard="Numeric" Margin="0,0,0,10"/>
+
+        <Label Text="Sexo"/>
+        <Entry Text="{Binding PatientDto.Sex}" Margin="0,0,0,10"/>
+
+        <Label Text="Nivel de actividad"/>
+        <Entry Text="{Binding PatientDto.ActivityLevel}" Keyboard="Numeric" Margin="0,0,0,10"/>
+
+        <Button Text="Guardar" Command="{Binding SaveCommand}" BackgroundColor="SkyBlue"/>
+
+    </VerticalStackLayout>
+</ContentPage>
