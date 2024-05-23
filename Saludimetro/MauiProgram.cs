@@ -28,7 +28,11 @@ public static class MauiProgram
         builder.Services.AddTransient<PatientPage>();
         builder.Services.AddTransient<PatientViewModel>();
 
-        builder.Services.AddTransient<MainPage>();
+        //builder.Services.AddTransient<MainPage>();
+        builder.Services.AddTransient<PatientShowPage>();
+        builder.Services.AddTransient<PatientShowModel>();
+
+
 
         // Añadir estos registros
         builder.Services.AddTransient<PatientListPage>();
@@ -36,7 +40,7 @@ public static class MauiProgram
 
         Routing.RegisterRoute(nameof(PatientPage), typeof(PatientPage));
         Routing.RegisterRoute(nameof(PatientListPage), typeof(PatientListPage)); // Asegúrate de registrar la ruta
-
+        Routing.RegisterRoute(nameof(PatientShowPage), typeof(PatientShowPage));
 
 #if DEBUG
         builder.Logging.AddDebug();

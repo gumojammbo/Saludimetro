@@ -17,4 +17,9 @@
         ContentTemplate="{DataTemplate local:PatientListPage}"
         Route="patientList" />
 
+    <!--<ShellContent
+        Title="Ver paciente"
+        ContentTemplate="{DataTemplate local:PatientShowPage}"
+        Route="patientShow" />-->
+
 </Shell>

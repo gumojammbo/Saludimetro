@@ -13,19 +13,16 @@ using Saludimetro.Views;
 
 namespace Saludimetro.ViewModels
 {
-	public partial class PatientListViewModel : ObservableObject
-	{
-
+    public partial class PatientListViewModel : ObservableObject
+    {
         private readonly PatientDbContext _dbContext;
 
-		[ObservableProperty]
-		private ObservableCollection<PatientDTO> patientList = new ObservableCollection<PatientDTO>();
-
+        [ObservableProperty]
+        private ObservableCollection<PatientDTO> patientList = new ObservableCollection<PatientDTO>();
 
         public PatientListViewModel(PatientDbContext context)
-		{
+        {
             _dbContext = context;
-
             MainThread.BeginInvokeOnMainThread(new Action(async () => await GetPatients()));
 
             WeakReferenceMessenger.Default.Register<PatientMessenger>(this, (r, m) =>
@@ -39,7 +36,7 @@ namespace Saludimetro.ViewModels
             var list = await _dbContext.Patients.ToListAsync();
             if (list.Any())
             {
-                foreach(var item in list)
+                foreach (var item in list)
                 {
                     PatientList.Add(new PatientDTO
                     {
@@ -66,8 +63,7 @@ namespace Saludimetro.ViewModels
             }
             else
             {
-                var found = PatientList
-                    .First(p => p.PatientID == patientDto.PatientID);
+                var found = PatientList.First(p => p.PatientID == patientDto.PatientID);
 
                 found.Name = patientDto.Name;
                 found.LastName = patientDto.LastName;
@@ -86,7 +82,6 @@ namespace Saludimetro.ViewModels
             await Shell.Current.GoToAsync(uri);
         }
 
-
         [RelayCommand]
         private async Task Edit(PatientDTO patientDto)
         {
@@ -95,22 +90,26 @@ namespace Saludimetro.ViewModels
         }
 
         [RelayCommand]
+        private async Task Showpatient(PatientDTO patientDto)
+        {
+            var uri = $"{nameof(PatientShowPage)}?id={patientDto.PatientID}";
+            await Shell.Current.GoToAsync(uri);
+        }
+
+
+        [RelayCommand]
         private async Task Delete(PatientDTO patientDto)
         {
             bool answer = await Shell.Current.DisplayAlert("Mensaje", "Quieres eliminar el paciente?", "Si", "No");
 
             if (answer)
             {
-                var found = await _dbContext.Patients
-                    .FirstAsync(p => p.PatientID == patientDto.PatientID);
+                var found = await _dbContext.Patients.FirstAsync(p => p.PatientID == patientDto.PatientID);
 
                 _dbContext.Patients.Remove(found);
-
                 await _dbContext.SaveChangesAsync();
                 PatientList.Remove(patientDto);
             }
         }
-
     }
 }
-

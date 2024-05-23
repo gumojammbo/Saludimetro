@@ -8,5 +8,6 @@ public partial class PatientListPage : ContentPage
     {
         InitializeComponent();
         BindingContext = viewModel;
+
     }
 }
