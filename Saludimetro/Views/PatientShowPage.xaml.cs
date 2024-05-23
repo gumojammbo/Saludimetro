@@ -2,11 +2,11 @@
 
 namespace Saludimetro.Views;
 
-public partial class PatientShowPage : ContentPage
+public partial class PatientShowPage : TabbedPage
 {
-	public PatientShowPage(PatientShowModel viewModel)
-	{
-		InitializeComponent();
-		BindingContext = viewModel;
-	}
+    public PatientShowPage(PatientShowModel viewModel)
+    {
+        InitializeComponent();
+        BindingContext = viewModel;
+    }
 }

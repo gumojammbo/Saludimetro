@@ -28,6 +28,18 @@ namespace Saludimetro.ViewModels
         [ObservableProperty]
         private bool isLoadingVisible = true;
 
+        [ObservableProperty]
+        private double bmi;
+
+        [ObservableProperty]
+        private double bodyfat;
+
+        [ObservableProperty]
+        private double idealweight;
+
+        [ObservableProperty]
+        private double calorieintake;
+
         public PatientShowModel(PatientDbContext context)
         {
             _dbContext = context;
@@ -52,9 +64,104 @@ namespace Saludimetro.ViewModels
             PatientDto.ActivityLevel = found.ActivityLevel;
 
             PageTitle = $"{found.Name} {found.LastName}";
-
+            CalculateMetrics();
             IsLoadingVisible = false;
         }
+
+        private void CalculateMetrics()
+        {
+            Bmi = CalculateBMI();
+            Bodyfat = CalculateBodyFat();
+            Idealweight = CalculateIdealWeight();
+            Calorieintake = CalculateDailyCalorieIntake();
+
+        }
+
+        private double CalculateBMI()
+        {
+            if (PatientDto.Height > 0)
+            {
+                return PatientDto.Weight / (PatientDto.Height * PatientDto.Height);
+            }
+            return 0;
+        }
+
+        private double CalculateBodyFat()
+        {
+            int sexCalculation;
+
+            if(PatientDto.Sex == 'M')
+            {
+                sexCalculation = 1;
+            }
+            else
+            {
+                sexCalculation = 0;
+            }
+
+            return 1.2 * Bmi + 0.23 * PatientDto.Age - 10.8 * (sexCalculation) - 5.4;
+        }
+
+        private double CalculateIdealWeight()
+        {
+            double sexCalculation;
+            double heightInCm = PatientDto.Height * 100;
+            Console.WriteLine(heightInCm);
+
+            if (PatientDto.Sex == 'M')
+            {
+                sexCalculation = 4;
+            }
+            else
+            {
+                sexCalculation = 2.5;
+            }
+
+            return heightInCm - 100 - ((heightInCm - 150) / sexCalculation);
+        }
+
+        private double CalculateDailyCalorieIntake()
+        {
+            double activityEquivalence =  0;
+            double heightInCm = PatientDto.Height * 100;
+
+
+            switch (PatientDto.activityLevel)
+            {
+                case 1:
+                    activityEquivalence = 1.200;
+                    break;
+                case 2:
+                    activityEquivalence = 1.375;
+                    break;
+                case 3:
+                    activityEquivalence = 1.550;
+                    break;
+                case 4:
+                    activityEquivalence = 1.725;
+                    break;
+                case 5:
+                    activityEquivalence = 1.900;
+                    break;
+            }
+
+
+            double bmr = 0;
+            if(PatientDto.Sex == 'M')
+            {
+                bmr = (heightInCm * 6.25) + (PatientDto.Weight * 9.99) - (PatientDto.Age * 4.92) + 5;
+            }
+            else
+            {
+                bmr = (heightInCm * 6.25) + (PatientDto.Weight * 9.99) - (PatientDto.Age * 4.92) - 161;
+            }
+
+            return bmr * activityEquivalence;
+
+        }
+
+
+
     }
 }
 
