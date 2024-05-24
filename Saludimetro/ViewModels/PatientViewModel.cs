@@ -7,6 +7,7 @@ using Saludimetro.DataAccess;
 using Saludimetro.DTOs;
 using Saludimetro.Utilities;
 using Saludimetro.Models;
+using System.Collections.ObjectModel;
 
 namespace Saludimetro.ViewModels
 {
@@ -22,6 +23,9 @@ namespace Saludimetro.ViewModels
 
         [ObservableProperty]
         private string pageTitle;
+
+        [ObservableProperty]
+        private ObservableCollection<string> sexOptions = new ObservableCollection<string> {"Masculino", "Femenino"};
 
         [ObservableProperty]
         private bool isLoadingVisible = false;

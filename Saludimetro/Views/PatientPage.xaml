@@ -7,31 +7,75 @@
         <ActivityIndicator IsVisible="{Binding IsLoadingVisible}"
                            IsRunning="{Binding IsLoadingVisible}"
                            Color="Blue"
-                           HeightRequest="30"
+                           HeightRequest="25"
                            />
 
-        <Label Text="Nombre"/>
-        <Entry Text="{Binding PatientDto.Name}" Margin="0,0,0,10"/>
 
-        <Label Text="Apellido"/>
-        <Entry Text="{Binding PatientDto.LastName}" Margin="0,0,0,10"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-        <Label Text="Edad"/>
-        <Entry Text="{Binding PatientDto.Age}" Keyboard="Numeric" Margin="0,0,0,10"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <Label Text="Estatura"/>
-        <Entry Text="{Binding PatientDto.Height}" Keyboard="Numeric" Margin="0,0,0,10"/>
+            <VerticalStackLayout Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
+                <Label Text="Nombre" HorizontalTextAlignment="Center" Margin="10,0,0,10" />
+                <Entry Text="{Binding PatientDto.Name}" Margin="0,0,0,25" MaximumWidthRequest="320" HorizontalTextAlignment="Center"/>
+            </VerticalStackLayout>
 
-        <Label Text="Peso"/>
-        <Entry Text="{Binding PatientDto.Weight}" Keyboard="Numeric" Margin="0,0,0,10"/>
+            <VerticalStackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
+                <Label Text="Apellido(s)" HorizontalTextAlignment="Center" Margin="10,0,0,10"/>
+                <Entry Text="{Binding PatientDto.LastName}" Margin="0,0,0,25" MaximumWidthRequest="320" HorizontalTextAlignment="Center"/>
+            </VerticalStackLayout>
 
-        <Label Text="Sexo"/>
-        <Entry Text="{Binding PatientDto.Sex}" Margin="0,0,0,10"/>
+            <VerticalStackLayout Grid.Column="0" Grid.Row="2">
+                <Label Text="Edad" HorizontalTextAlignment="Center" Margin="10,0,0,10"/>
+                <Entry Text="{Binding PatientDto.Age}" Keyboard="Numeric" Margin="0,0,0,25" MaximumWidthRequest="150" HorizontalTextAlignment="Center"/>
+            </VerticalStackLayout>
 
-        <Label Text="Nivel de actividad"/>
-        <Entry Text="{Binding PatientDto.ActivityLevel}" Keyboard="Numeric" Margin="0,0,0,10"/>
+            <VerticalStackLayout Grid.Column="1" Grid.Row="2">
+                <Label Text="Sexo" HorizontalTextAlignment="Center" Margin="10,0,0,10"/>
+                <Picker ItemsSource="{Binding SexOptions}" 
+                        SelectedItem="{Binding PatientDto.Sex}"
+                        Margin="0,0,0,25" 
+                        MaximumWidthRequest="150"
+                        MinimumWidthRequest="150"
+                        HorizontalOptions="Center" />
+            </VerticalStackLayout>
 
-        <Button Text="Guardar" Command="{Binding SaveCommand}" BackgroundColor="SkyBlue"/>
+            <VerticalStackLayout Grid.Column="0" Grid.Row="3">
+                <Label Text="Peso (kg)" HorizontalTextAlignment="Center" Margin="10,0,0,10"/>
+                <Entry Text="{Binding PatientDto.Weight}" Keyboard="Numeric" Margin="0,0,0,25" MaximumWidthRequest="150" HorizontalTextAlignment="Center"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Column="1" Grid.Row="3">
+               <Label Text="Estatura (m)" HorizontalTextAlignment="Center" Margin="10,0,0,10"/>
+                <Entry Text="{Binding PatientDto.Height}" Keyboard="Numeric" Margin="0,0,0,25" MaximumWidthRequest="150" HorizontalTextAlignment="Center"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2">
+                <Label Text="Nivel de actividad" HorizontalTextAlignment="Center" Margin="10,0,0,10"/>
+                <Entry Text="{Binding PatientDto.ActivityLevel}" Keyboard="Numeric" Margin="0,0,0,25" MaximumWidthRequest="320" HorizontalTextAlignment="Center"/>
+            </VerticalStackLayout>
+        </Grid>
+        
+        
+        
+
+        
+
+        
+
+        
+
+        <Button Text="Guardar" Command="{Binding SaveCommand}"/>
 
     </VerticalStackLayout>
 </ContentPage>

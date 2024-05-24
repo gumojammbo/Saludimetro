@@ -62,7 +62,7 @@
 
                                 </Grid>
 
-                                <HorizontalStackLayout Grid.Column="1">
+                                <HorizontalStackLayout Grid.Column="1" HorizontalOptions="End">
                                     <ImageButton Source="pencil.png"
                                                  HeightRequest="1"
                                                  WidthRequest="10"
