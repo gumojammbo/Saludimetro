@@ -12,7 +12,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <BoxView x:Name="bmiBackground" Grid.Row="0" Color="Green"/>
+                <BoxView x:Name="bmiBackground" Grid.Row="0" Color="{Binding BmiColor}" />
 
                 <VerticalStackLayout Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center">
                     <Label Text="Tu indice de masa corporal es:" HorizontalOptions="Center"></Label>

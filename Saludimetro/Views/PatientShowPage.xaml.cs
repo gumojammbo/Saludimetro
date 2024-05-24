@@ -8,5 +8,7 @@ public partial class PatientShowPage : TabbedPage
     {
         InitializeComponent();
         BindingContext = viewModel;
+
+        
     }
 }

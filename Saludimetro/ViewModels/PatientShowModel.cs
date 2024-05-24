@@ -181,6 +181,31 @@ namespace Saludimetro.ViewModels
 
         }
 
+        [ObservableProperty]
+        private Color bmiColor;
+
+        partial void OnBmiChanged(double oldValue, double newValue)
+        {
+            BmiColor = GetBmiColor(newValue);
+        }
+
+        private Color GetBmiColor(double bmi)
+        {
+            if (bmi < 18.5)
+                return new Color(115, 165, 168); // Underweight
+            else if (bmi < 24.9)
+                return new Color(35, 64, 142); // Normal weight
+            else if (bmi < 29.9)
+                return new Color(230, 208, 33); // Overweight
+            else if (bmi < 34.9)
+                return new Color(226, 158, 40); // Obesity Class I
+            else if (bmi < 39.9)
+                return new Color(215, 87, 59); // Obesity Class II
+            else if (bmi > 40)
+                return new Color(165, 106, 66);  // Obesity Class III
+            else
+                return Colors.Red; // ???
+        }
 
 
     }
