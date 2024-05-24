@@ -6,18 +6,78 @@
              Shell.NavBarIsVisible="False">
 
     <ContentPage Title="IMC" IconImageSource="figure">
-        <VerticalStackLayout>
-             <Label Text="{Binding Bmi}" FontSize="Large"/>
-             <Label Text="{Binding Idealweight}" FontSize="Large"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
+                <BoxView x:Name="bmiBackground" Grid.Row="0" Color="Green"/>
 
-        </VerticalStackLayout>
+                <VerticalStackLayout Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center">
+                    <Label Text="Tu indice de masa corporal es:" HorizontalOptions="Center"></Label>
+                    <Label Text="{Binding Bmi, StringFormat='{0:F2}'}" FontSize="72" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <Label x:Name="descripcion" Text="DESCRIPCION" HorizontalOptions="Center"/>
+
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center">
+                    <Label Text="Actualmente pesas: " HorizontalOptions="Center"/>
+                    <Label Text="{Binding Weight, StringFormat='{0:F2} kg'}" FontSize="Medium" HorizontalOptions="Center" Margin="0,0,0,30"/>
+                    <Label Text="Tu peso ideal es de: " HorizontalOptions="Center"/>
+                    <Label Text="{Binding Idealweight, StringFormat='{0:F2} kg'}" FontSize="Medium" HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Grid>
     </ContentPage>
+
     <ContentPage Title="Grasa Corporal" IconImageSource="scalemass">
-        <Label Text="{Binding Bodyfat}" FontSize="Large"/>
+
+        <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <BoxView x:Name="bodyfatBackground" Grid.Row="0" Color="Green"/>
+                <VerticalStackLayout Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center">
+                    <Label Text="Tu porcentaje de grasa corporal es:" HorizontalOptions="Center"></Label>
+                    <Label Text="{Binding Bodyfat, StringFormat='{0:F2} %'}" FontSize="72" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <Label x:Name="bodyfatDescripcion" Text="DESCRIPCION" HorizontalOptions="Center"/>
+
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center">
+                    <Label Text="Tu IMC es de: " HorizontalOptions="Center"/>
+                    <Label Text="{Binding Bmi, StringFormat='{0:F2}'}" FontSize="Medium" HorizontalOptions="Center" Margin="0,0,0,30"/>
+                    <Label Text="Tienes: " HorizontalOptions="Center"/>
+                    <Label Text="{Binding Age, StringFormat='{0} años'}" FontSize="Medium" HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Grid>
+
+
 
     </ContentPage>
     <ContentPage Title="Consumo de calorías" IconImageSource="forkknife" HeightRequest="1">
-        <Label Text="{Binding Calorieintake}" FontSize="Large"/>
+
+        <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <VerticalStackLayout Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center">
+                    <Label Text="Deberías consumir: " FontSize="Medium" HorizontalOptions="Center"/>
+                    <Label Text="{Binding Calorieintake, StringFormat='{0:F0} kcal'}" FontSize="68" HorizontalOptions="Center"/>
+
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center">
+                    <Label Text="Ya que haces actividad fisica: " FontSize="Medium" HorizontalOptions="Center"/>
+                    <Label Text="{Binding ActivityLevel}" FontSize="Large" HorizontalOptions="Center"/>
+
+                </VerticalStackLayout>
+            </Grid>
+
+
     </ContentPage>
 </TabbedPage>

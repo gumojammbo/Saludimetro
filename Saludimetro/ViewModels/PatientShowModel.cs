@@ -24,6 +24,20 @@ namespace Saludimetro.ViewModels
         [ObservableProperty]
         private string pageTitle;
 
+        [ObservableProperty]
+        private string name;
+
+        [ObservableProperty]
+        private string lastName;
+
+        [ObservableProperty]
+        private string activityLevel;
+
+        [ObservableProperty]
+        private int age;
+
+        [ObservableProperty]
+        private float weight;
 
         [ObservableProperty]
         private bool isLoadingVisible = true;
@@ -64,6 +78,13 @@ namespace Saludimetro.ViewModels
             PatientDto.ActivityLevel = found.ActivityLevel;
 
             PageTitle = $"{found.Name} {found.LastName}";
+            Name = found.Name;
+            LastName = found.LastName;
+            Weight = found.Weight;
+            ActivityLevel = found.ActivityLevel;
+            Age = found.Age;
+
+
             CalculateMetrics();
             IsLoadingVisible = false;
         }

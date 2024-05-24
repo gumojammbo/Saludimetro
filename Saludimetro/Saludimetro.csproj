@@ -90,5 +90,11 @@
 	  <BundleResource Include="Resources\Images\figure.png" />
 	  <BundleResource Include="Resources\Images\forkknife.png" />
 	  <BundleResource Include="Resources\Images\scalemass.png" />
+	  <MauiImage Update="Resources\Images\figure.png" BaseSize="20,20" />
+	  <MauiImage Update="Resources\Images\scalemass.png" BaseSize="20,20" />
+	  <MauiImage Update="Resources\Images\forkknife.png" BaseSize="20,20" />
+
+
+
 	</ItemGroup>
 </Project>
