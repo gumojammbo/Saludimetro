@@ -4,7 +4,8 @@
              x:Class="Saludimetro.Views.PatientShowPage"
              Title="{Binding PageTitle}"
              Shell.NavBarIsVisible="False">
-    <ContentPage Title="IMC">
+
+    <ContentPage Title="IMC" IconImageSource="figure">
         <VerticalStackLayout>
              <Label Text="{Binding Bmi}" FontSize="Large"/>
              <Label Text="{Binding Idealweight}" FontSize="Large"/>
@@ -12,11 +13,11 @@
 
         </VerticalStackLayout>
     </ContentPage>
-    <ContentPage Title="Grasa Corporal">
+    <ContentPage Title="Grasa Corporal" IconImageSource="scalemass">
         <Label Text="{Binding Bodyfat}" FontSize="Large"/>
 
     </ContentPage>
-    <ContentPage Title="Consumo de calorías">
+    <ContentPage Title="Consumo de calorías" IconImageSource="forkknife" HeightRequest="1">
         <Label Text="{Binding Calorieintake}" FontSize="Large"/>
     </ContentPage>
 </TabbedPage>

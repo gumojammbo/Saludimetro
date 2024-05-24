@@ -72,9 +72,9 @@
 	  <None Remove="Views\" />
 	  <None Remove="Resources\Images\pencil.svg" />
 	  <None Remove="Resources\Images\trash.svg" />
-	  <None Remove="Resources\Images\figure.svg" />
-	  <None Remove="Resources\Images\forkknife.svg" />
-	  <None Remove="Resources\Images\scalemass.svg" />
+	  <None Remove="Resources\Images\figure.png" />
+	  <None Remove="Resources\Images\forkknife.png" />
+	  <None Remove="Resources\Images\scalemass.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Models\" />
@@ -87,10 +87,8 @@
 	<ItemGroup>
 	  <BundleResource Include="Resources\Images\pencil.svg" />
 	  <BundleResource Include="Resources\Images\trash.svg" />
-	  <BundleResource Include="Resources\Images\figure.svg" />
-	  <BundleResource Include="Resources\Images\forkknife.svg" />
-	  <BundleResource Include="Resources\Images\figure.svg" />
-	  <BundleResource Include="Resources\Images\forkknife.svg" />
-	  <BundleResource Include="Resources\Images\scalemass.svg" />
+	  <BundleResource Include="Resources\Images\figure.png" />
+	  <BundleResource Include="Resources\Images\forkknife.png" />
+	  <BundleResource Include="Resources\Images\scalemass.png" />
 	</ItemGroup>
 </Project>
