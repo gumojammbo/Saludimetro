@@ -10,4 +10,6 @@ public partial class PatientPage : ContentPage
 		InitializeComponent();
 		BindingContext = viewModel;
 	}
+
+
 }

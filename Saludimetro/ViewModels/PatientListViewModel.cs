@@ -111,5 +111,7 @@ namespace Saludimetro.ViewModels
                 PatientList.Remove(patientDto);
             }
         }
+
+        
     }
 }

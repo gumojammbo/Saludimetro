@@ -1,5 +1,6 @@
 ﻿using Saludimetro.ViewModels;
 
+
 namespace Saludimetro.Views;
 
 public partial class PatientListPage : ContentPage

@@ -26,6 +26,9 @@ namespace Saludimetro.ViewModels
         [ObservableProperty]
         private bool isLoadingVisible = false;
 
+        [ObservableProperty]
+        private string validationErrors;
+
         public PatientViewModel(PatientDbContext context)
         {
             _dbContext = context;
@@ -66,6 +69,16 @@ namespace Saludimetro.ViewModels
         [RelayCommand]
         private async Task Save()
         {
+
+            ValidatePatient();
+
+            if (!string.IsNullOrEmpty(ValidationErrors))
+            {
+                await Shell.Current.DisplayAlert("Error al guardar", ValidationErrors, "OK");
+                return;
+            }
+
+
             IsLoadingVisible = true;
             PatientMessage message = new PatientMessage();
 
@@ -122,6 +135,22 @@ namespace Saludimetro.ViewModels
                     await Shell.Current.Navigation.PopAsync();
                 });
             });
+        }
+
+        [RelayCommand]
+        private void ValidatePatient()
+        {
+            PatientDto.Validate();
+
+            if (PatientDto.HasErrors)
+            {
+                ValidationErrors = string.Join("\n", PatientDto.GetErrors().Select(e => e.ErrorMessage));
+            }
+            else
+            {
+                ValidationErrors = string.Empty;
+            }
+
         }
 
     }
