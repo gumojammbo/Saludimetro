@@ -17,7 +17,7 @@
                 <VerticalStackLayout Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center">
                     <Label Text="Tu indice de masa corporal es:" HorizontalOptions="Center"></Label>
                     <Label Text="{Binding Bmi, StringFormat='{0:F2}'}" FontSize="72" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                    <Label x:Name="descripcion" Text="DESCRIPCION" HorizontalOptions="Center"/>
+                    <Label x:Name="descripcion" Text="{Binding BmiDescription}" HorizontalOptions="Center"/>
 
                 </VerticalStackLayout>
 
@@ -38,11 +38,11 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <BoxView x:Name="bodyfatBackground" Grid.Row="0" Color="Green"/>
+                <BoxView x:Name="bodyfatBackground" Grid.Row="0" Color="{Binding BodyFatColor}"/>
                 <VerticalStackLayout Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center">
                     <Label Text="Tu porcentaje de grasa corporal es:" HorizontalOptions="Center"></Label>
                     <Label Text="{Binding Bodyfat, StringFormat='{0:F2} %'}" FontSize="72" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                    <Label x:Name="bodyfatDescripcion" Text="DESCRIPCION" HorizontalOptions="Center"/>
+                    <Label x:Name="bodyfatDescripcion" Text="{Binding BodyFatDescription}" HorizontalOptions="Center"/>
 
                 </VerticalStackLayout>
 

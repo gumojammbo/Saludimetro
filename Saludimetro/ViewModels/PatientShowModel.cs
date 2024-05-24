@@ -46,6 +46,9 @@ namespace Saludimetro.ViewModels
         private double bmi;
 
         [ObservableProperty]
+        private string sex;
+
+        [ObservableProperty]
         private double bodyfat;
 
         [ObservableProperty]
@@ -83,6 +86,7 @@ namespace Saludimetro.ViewModels
             Weight = found.Weight;
             ActivityLevel = found.ActivityLevel;
             Age = found.Age;
+            Sex = found.Sex;
 
 
             CalculateMetrics();
@@ -187,6 +191,7 @@ namespace Saludimetro.ViewModels
         partial void OnBmiChanged(double oldValue, double newValue)
         {
             BmiColor = GetBmiColor(newValue);
+            BmiDescription = GetBmiDescription(newValue);
         }
 
         private Color GetBmiColor(double bmi)
@@ -207,6 +212,109 @@ namespace Saludimetro.ViewModels
                 return Colors.Red; // ???
         }
 
+        [ObservableProperty]
+        private string bmiDescription;
+
+        private string GetBmiDescription(double bmi)
+        {
+            if (bmi < 18.5)
+                return "Bajo peso"; // Underweight
+            else if (bmi < 24.9)
+                return "Peso normal"; // Normal weight
+            else if (bmi < 29.9)
+                return "Pre-obesidad o sobrepeso"; // Overweight
+            else if (bmi < 34.9)
+                return "Obesidad clase I"; // Obesity Class I
+            else if (bmi < 39.9)
+                return "Obesidad clase II"; // Obesity Class II
+            else if (bmi > 40)
+                return "Obesidad clase III"; // Obesity Class III
+            else
+                return ""; // ???
+        }
+
+
+        [ObservableProperty]
+        private Color bodyFatColor;
+
+        partial void OnBodyfatChanged(double oldValue, double newValue)
+        {
+            BodyFatColor = GetBodyFatColor(newValue);
+            BodyFatDescription = GetBodyFatDescription(newValue);
+        }
+
+
+        private Color GetBodyFatColor(double bodyfat)
+        {
+            if(Sex.Equals("Femenino"))
+            {
+                if (bodyfat < 13.99)
+                    return new Color(115, 165, 168); // Underweight
+                else if (bodyfat < 20.99)
+                    return new Color(35, 64, 142); // Normal weight
+                else if (bodyfat < 24.99)
+                    return new Color(230, 208, 33); // Overweight
+                else if (bodyfat < 31.99)
+                    return new Color(226, 158, 40); // Obesity Class I
+                else if (bodyfat > 32)
+                    return new Color(215, 87, 59); // Obesity Class II
+                else
+                    return Colors.Red; // ???
+            }
+            else
+            {
+                if (bodyfat < 5)
+                    return new Color(115, 165, 168); // Underweight
+                else if (bodyfat < 13)
+                    return new Color(35, 64, 142); // Normal weight
+                else if (bodyfat < 17)
+                    return new Color(230, 208, 33); // Overweight
+                else if (bodyfat < 24.99)
+                    return new Color(226, 158, 40); // Obesity Class I
+                else if (bodyfat > 25)
+                    return new Color(215, 87, 59); // Obesity Class II
+                else
+                    return Colors.Red; // ???
+            }
+            
+        }
+
+        [ObservableProperty]
+        private string bodyFatDescription;
+
+        private string GetBodyFatDescription(double bodyfat)
+        {
+            if (Sex.Equals("Femenino"))
+            {
+                if (bodyfat < 13.99)
+                    return "Grasa escencial"; // Underweight
+                else if (bodyfat < 20.99)
+                    return "Atletas"; // Normal weight
+                else if (bodyfat < 24.99)
+                    return "Fitness"; // Overweight
+                else if (bodyfat < 31.99)
+                    return "Aceptable"; // Obesity Class I
+                else if (bodyfat > 32)
+                    return "Obesidad"; // Obesity Class II
+                else
+                    return ""; // ???
+            }
+            else
+            {
+                if (bodyfat < 5)
+                    return "Grasa escencial"; // Underweight
+                else if (bodyfat < 13)
+                    return "Atletas"; // Normal weight
+                else if (bodyfat < 17)
+                    return "Fitness"; // Overweight
+                else if (bodyfat < 24.99)
+                    return "Aceptable"; // Obesity Class I
+                else if (bodyfat > 25)
+                    return "Obesidad"; // Obesity Class II
+                else
+                    return ""; // ???
+            }
+        }
 
     }
 }
