@@ -62,7 +62,12 @@
 
             <VerticalStackLayout Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2">
                 <Label Text="Nivel de actividad" HorizontalTextAlignment="Center" Margin="10,0,0,10"/>
-                <Entry Text="{Binding PatientDto.ActivityLevel}" Keyboard="Numeric" Margin="0,0,0,25" MaximumWidthRequest="320" HorizontalTextAlignment="Center"/>
+                <Picker ItemsSource="{Binding ActivityOptions}" 
+                        SelectedItem="{Binding PatientDto.ActivityLevel}"
+                        Margin="0,0,0,25" 
+                        MaximumWidthRequest="320"
+                        MinimumWidthRequest="320"
+                        HorizontalOptions="Center" />
             </VerticalStackLayout>
         </Grid>
         

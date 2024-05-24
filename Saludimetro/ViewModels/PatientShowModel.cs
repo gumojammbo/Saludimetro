@@ -90,7 +90,7 @@ namespace Saludimetro.ViewModels
         {
             int sexCalculation;
 
-            if(PatientDto.Sex == 'M')
+            if(PatientDto.Sex.Equals("Masculino"))
             {
                 sexCalculation = 1;
             }
@@ -108,7 +108,7 @@ namespace Saludimetro.ViewModels
             double heightInCm = PatientDto.Height * 100;
             Console.WriteLine(heightInCm);
 
-            if (PatientDto.Sex == 'M')
+            if (PatientDto.Sex.Equals("Masculino"))
             {
                 sexCalculation = 4;
             }
@@ -128,26 +128,26 @@ namespace Saludimetro.ViewModels
 
             switch (PatientDto.activityLevel)
             {
-                case 1:
+                case "Rara vez":
                     activityEquivalence = 1.200;
                     break;
-                case 2:
+                case "1 a 3 días por semana":
                     activityEquivalence = 1.375;
                     break;
-                case 3:
+                case "3 a 5 días por semana":
                     activityEquivalence = 1.550;
                     break;
-                case 4:
+                case "6 a 7 días por semana":
                     activityEquivalence = 1.725;
                     break;
-                case 5:
+                case "Diariamente o dos veces al día":
                     activityEquivalence = 1.900;
                     break;
             }
 
 
             double bmr = 0;
-            if(PatientDto.Sex == 'M')
+            if(PatientDto.Sex.Equals("Masculino"))
             {
                 bmr = (heightInCm * 6.25) + (PatientDto.Weight * 9.99) - (PatientDto.Age * 4.92) + 5;
             }

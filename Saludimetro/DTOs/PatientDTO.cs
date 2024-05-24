@@ -35,12 +35,12 @@ namespace Saludimetro.DTOs
 
         [ObservableProperty]
         [Required(ErrorMessage = "El sexo es obligatorio.")]
-        [RegularExpression("M|F", ErrorMessage = "El sexo debe ser 'M' (Masculino) o 'F' (Femenino).")]
-        public char sex;
+        [RegularExpression("Masculino|Femenino", ErrorMessage = "El sexo debe ser Masculino o Femenino")]
+        public string sex;
 
         [ObservableProperty]
-        [Range(0, 5, ErrorMessage = "El nivel de actividad debe estar entre 0 y 5.")]
-        public int activityLevel;
+        [Required(ErrorMessage = "Debes elegir un nivel de actividad")]
+        public string activityLevel;
 
         public void Validate()
         {

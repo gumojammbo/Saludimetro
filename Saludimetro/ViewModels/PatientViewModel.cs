@@ -28,10 +28,21 @@ namespace Saludimetro.ViewModels
         private ObservableCollection<string> sexOptions = new ObservableCollection<string> {"Masculino", "Femenino"};
 
         [ObservableProperty]
+        private ObservableCollection<string> activityOptions = new ObservableCollection<string>
+        {
+            "Rara vez",
+            "1 a 3 días por semana",
+            "3 a 5 días por semana",
+            "6 a 7 días por semana",
+            "Diariamente o dos veces al día"
+        };
+
+        [ObservableProperty]
         private bool isLoadingVisible = false;
 
         [ObservableProperty]
         private string validationErrors;
+
 
         public PatientViewModel(PatientDbContext context)
         {

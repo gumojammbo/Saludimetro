@@ -18,9 +18,9 @@ namespace Saludimetro.Models
 
         public float Height { get; set; }
 
-        public char Sex { get; set; }
+        public string Sex { get; set; }
 
-        public int ActivityLevel { get; set; }
+        public string ActivityLevel { get; set; }
     }
 }
 
