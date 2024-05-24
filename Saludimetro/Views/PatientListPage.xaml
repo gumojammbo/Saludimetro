@@ -5,10 +5,12 @@
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              x:Class="Saludimetro.Views.PatientListPage"
              ios:NavigationPage.PrefersLargeTitles="true"
-             Shell.NavBarIsVisible="True">
+             Shell.NavBarIsVisible="False">
+
+
     <Grid RowDefinitions="Auto,*,Auto" RowSpacing="15" Margin="15">
         <Button Grid.Row="2" Text="Agregar Paciente" Command="{Binding CreateCommand}" Padding="5,5,5,5"/>
-        <Label Grid.Row="0" Text="Lista de pacientes" FontSize="Title"/>
+        <Label Grid.Row="0" Text="Lista de pacientes" FontSize="Title" FontAttributes="Bold,Italic"/>
 
         <ScrollView Grid.Row="1">
             <CollectionView ItemsSource="{Binding PatientList}">
@@ -18,46 +20,74 @@
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:PatientDTO">
-                        <Border Padding="10,5" HorizontalOptions="FillAndExpand">
+                        <Border HorizontalOptions="FillAndExpand" Padding="10">
                             <Border.StrokeShape>
                                 <RoundRectangle CornerRadius="5"/>
                             </Border.StrokeShape>
 
-                            <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto"
-                                  ColumnDefinitions="Auto,*">
 
-                                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Start" FontSize="Subtitle">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{Binding Name}" />
-                                            <Span Text=" " />
-                                            <Span Text="{Binding LastName}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
 
-                                    <Label.GestureRecognizers>
-                                        <TapGestureRecognizer
-                                            Command="{Binding BindingContext.ShowpatientCommand, Source={x:RelativeSource AncestorType={x:Type ContentPage}}}"
-                                            CommandParameter="{Binding}"/>
-                                    </Label.GestureRecognizers>
-                                </Label>
+                                    <ColumnDefinition Width="3*" />
 
-                                <Label Grid.Row="4" Grid.Column="0" Padding="10,15,10,5" Text="Editar" TextColor="Blue">
-                                    <Label.GestureRecognizers>
-                                        <TapGestureRecognizer
-                                            Command="{Binding BindingContext.EditCommand, Source={x:RelativeSource AncestorType={x:Type ContentPage}}}"
-                                            CommandParameter="{Binding}"/>
-                                    </Label.GestureRecognizers>
-                                </Label>
+                                    <ColumnDefinition Width="2*" />
 
-                                <Label Grid.Row="4" Grid.Column="1" Padding="10,15,0,5" Text="Eliminar" TextColor="Red">
-                                    <Label.GestureRecognizers>
-                                        <TapGestureRecognizer
-                                            Command="{Binding BindingContext.DeleteCommand, Source={x:RelativeSource AncestorType={x:Type ContentPage}}}"
-                                            CommandParameter="{Binding}"/>
-                                    </Label.GestureRecognizers>
-                                </Label>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0">
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Label Grid.Row="0" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="End" FontSize="Subtitle" Text="{Binding Name}" Margin="5">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding BindingContext.ShowpatientCommand, Source={x:RelativeSource AncestorType={x:Type ContentPage}}}"
+                                                CommandParameter="{Binding}"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+
+                                    <Label Grid.Row="1" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Start" FontSize="Subtitle" Text="{Binding LastName}" Margin="5">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding BindingContext.ShowpatientCommand, Source={x:RelativeSource AncestorType={x:Type ContentPage}}}"
+                                                CommandParameter="{Binding}"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+
+
+
+                                </Grid>
+
+                                <HorizontalStackLayout Grid.Column="1">
+                                    <ImageButton Source="pencil.png"
+                                                 HeightRequest="1"
+                                                 WidthRequest="10"
+                                                 Command="{Binding BindingContext.EditCommand, Source={x:RelativeSource AncestorType={x:Type ContentPage}}}"
+                                                 CommandParameter="{Binding}"/>
+
+
+
+
+
+                                    <ImageButton Source="trash.png"
+                                                 HeightRequest="1"
+                                                 Command="{Binding BindingContext.DeleteCommand, Source={x:RelativeSource AncestorType={x:Type ContentPage}}}"
+                                                 CommandParameter="{Binding}">
+
+
+                                    </ImageButton>
+
+                                    
+                                    </HorizontalStackLayout>
+                                
+
+
                             </Grid>
+
                         </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

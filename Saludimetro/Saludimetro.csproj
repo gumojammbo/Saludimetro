@@ -70,6 +70,9 @@
 	  <None Remove="DTOs\" />
 	  <None Remove="ViewModels\" />
 	  <None Remove="Views\" />
+	  <None Remove="Resources\Images\Pencil-37.png" />
+	  <None Remove="Resources\Images\pencil.svg" />
+	  <None Remove="Resources\Images\trash.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Models\" />
@@ -78,5 +81,9 @@
 	  <Folder Include="DTOs\" />
 	  <Folder Include="ViewModels\" />
 	  <Folder Include="Views\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <BundleResource Include="Resources\Images\pencil.svg" />
+	  <BundleResource Include="Resources\Images\trash.svg" />
 	</ItemGroup>
 </Project>
